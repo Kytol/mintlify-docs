@@ -105,8 +105,39 @@
       "group": "Features",
       "pages": [
         "features/index",
-        "features/patient-notes",
-        "features/organization-switching"
+        {
+          "group": "Core",
+          "pages": [
+            "features/dashboard",
+            "features/analytics",
+            "features/global-search",
+            "features/keyboard-shortcuts"
+          ]
+        },
+        {
+          "group": "Clinical",
+          "pages": [
+            "features/carepaths",
+            "features/questionnaires",
+            "features/risk-scoring",
+            "features/alerts",
+            "features/pending-approvals"
+          ]
+        },
+        {
+          "group": "Communication",
+          "pages": [
+            "features/messaging",
+            "features/patient-notes"
+          ]
+        },
+        {
+          "group": "Administration",
+          "pages": [
+            "features/settings",
+            "features/organization-switching"
+          ]
+        }
       ]
     },
     {
