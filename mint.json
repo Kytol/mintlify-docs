@@ -106,8 +106,13 @@
       "pages": [
         "features/index",
         "features/patient-notes",
-        "features/organization-switching",
-        "features/state-management-analysis"
+        "features/organization-switching"
+      ]
+    },
+    {
+      "group": "RFC",
+      "pages": [
+        "rfc/state-management-analysis"
       ]
     }
   ],
