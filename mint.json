@@ -1,0 +1,122 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Healthcare Platform Documentation",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#06b6d4",
+    "light": "#22d3ee",
+    "dark": "#0891b2",
+    "anchors": {
+      "from": "#06b6d4",
+      "to": "#3b82f6"
+    }
+  },
+  "topbarLinks": [],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://app.example.com"
+  },
+  "tabs": [
+    {
+      "name": "Design Specs",
+      "url": "design-specs"
+    },
+    {
+      "name": "API Reference",
+      "url": "api"
+    },
+    {
+      "name": "Architecture",
+      "url": "architecture"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": ["introduction", "quickstart"]
+    },
+    {
+      "group": "Design Specifications",
+      "pages": [
+        "design-specs/index",
+        {
+          "group": "Core Views",
+          "pages": [
+            "design-specs/dashboard",
+            "design-specs/patients-list",
+            "design-specs/patient-detail",
+            "design-specs/patient-dashboard"
+          ]
+        },
+        {
+          "group": "Clinical Tools",
+          "pages": [
+            "design-specs/carepaths",
+            "design-specs/risk-scoring",
+            "design-specs/alerts",
+            "design-specs/pending-approvals"
+          ]
+        },
+        {
+          "group": "Communication",
+          "pages": [
+            "design-specs/messages",
+            "design-specs/care-team"
+          ]
+        },
+        {
+          "group": "Administration",
+          "pages": [
+            "design-specs/settings",
+            "design-specs/analytics"
+          ]
+        },
+        {
+          "group": "Components",
+          "pages": [
+            "design-specs/components"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": ["api/API_INTEGRATION_GUIDE", "api/GRAPHQL_SCHEMA"]
+    },
+    {
+      "group": "Architecture",
+      "pages": [
+        "architecture/BACKEND_ARCHITECTURE",
+        "architecture/DATABASE_SCHEMA"
+      ]
+    },
+    {
+      "group": "Diagrams",
+      "pages": [
+        "diagrams/DATA_FLOW",
+        "diagrams/VISUAL_ARCHITECTURE"
+      ]
+    },
+    {
+      "group": "Features",
+      "pages": [
+        "features/index",
+        "features/patient-notes",
+        "features/organization-switching",
+        "features/state-management-analysis"
+      ]
+    }
+  ],
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true,
+    "raiseIssue": true
+  },
+  "modeToggle": {
+    "default": "dark"
+  }
+}
