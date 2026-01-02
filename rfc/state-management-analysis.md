@@ -1,3 +1,9 @@
+---
+title: State Management Analysis
+description: 'Technical analysis comparing NgRx vs service-based state management'
+icon: 'code'
+---
+
 # NgRx vs Service-Based State Management Analysis
 
 ## Application Context

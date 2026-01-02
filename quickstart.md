@@ -16,6 +16,10 @@ Before you begin, ensure you have the following installed:
   </Card>
 </CardGroup>
 
+<Info>
+You can verify your installations by running `node --version` and `npm --version` in your terminal.
+</Info>
+
 ## Installation
 
 <Steps>
@@ -52,6 +56,10 @@ Before you begin, ensure you have the following installed:
   </Step>
 </Steps>
 
+<Check>
+**Success!** You should now see the login page at http://localhost:4200
+</Check>
+
 ## Project Structure
 
 ```
@@ -77,20 +85,24 @@ healthcare-platform/
   <Tab title="Pages">
     Pages are routable components that represent full views in the application:
     
-    - `DashboardComponent` - Main landing page
-    - `PatientsListComponent` - Patient directory
-    - `PatientDetailComponent` - Individual patient view
-    - `MessagesComponent` - Messaging interface
+    | Page | Description |
+    |------|-------------|
+    | `DashboardComponent` | Main landing page |
+    | `PatientsListComponent` | Patient directory |
+    | `PatientDetailComponent` | Individual patient view |
+    | `MessagesComponent` | Messaging interface |
     
     Pages are located in `src/app/pages/`
   </Tab>
   <Tab title="Components">
     Components are reusable UI elements used across pages:
     
-    - `RiskBadgeComponent` - Risk level indicator
-    - `FilterBarComponent` - Search and filter controls
-    - `ChatThreadComponent` - Message thread display
-    - `ToastComponent` - Notification display
+    | Component | Description |
+    |-----------|-------------|
+    | `RiskBadgeComponent` | Risk level indicator |
+    | `FilterBarComponent` | Search and filter controls |
+    | `ChatThreadComponent` | Message thread display |
+    | `ToastComponent` | Notification display |
     
     Components are located in `src/app/components/`
   </Tab>
@@ -137,7 +149,7 @@ The application uses Angular Router with the following main routes:
   <Card
     title="Explore the Dashboard"
     icon="gauge"
-    href="/design-specs/dashboard"
+    href="/features/dashboard"
   >
     Start with the main dashboard to understand the application layout
   </Card>
@@ -151,7 +163,7 @@ The application uses Angular Router with the following main routes:
   <Card
     title="Understand Risk Scoring"
     icon="chart-line"
-    href="/design-specs/risk-scoring"
+    href="/features/risk-scoring"
   >
     Explore the predictive analytics features
   </Card>
@@ -183,14 +195,53 @@ npm run lint
 npm run format
 ```
 
+## Common Tasks
+
+<AccordionGroup>
+  <Accordion title="Adding a New Page" icon="file-plus">
+    1. Create component in `src/app/pages/`
+    2. Add route in `app.routes.ts`
+    3. Add navigation link in sidebar
+  </Accordion>
+  <Accordion title="Creating a Service" icon="gear">
+    1. Generate with `ng generate service services/my-service`
+    2. Add to providers if not using `providedIn: 'root'`
+    3. Inject in components as needed
+  </Accordion>
+  <Accordion title="Adding a Component" icon="puzzle-piece">
+    1. Create in `src/app/components/`
+    2. Export from component module
+    3. Import in consuming components
+  </Accordion>
+  <Accordion title="Styling with Tailwind" icon="paintbrush">
+    1. Use Tailwind utility classes directly
+    2. Custom styles in `styles.scss`
+    3. Theme colors defined in `tailwind.config.js`
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+<Warning>
+If you encounter issues, try these common solutions first.
+</Warning>
+
+| Issue | Solution |
+|-------|----------|
+| Port 4200 in use | Use `npm start -- --port 4201` |
+| Dependencies fail | Delete `node_modules` and run `npm install` |
+| Build errors | Check TypeScript version compatibility |
+| Styles not loading | Verify Tailwind config and imports |
+
 ## Next Steps
 
 <Check>
-  **Congratulations!** You've set up the Healthcare Platform locally.
+**Congratulations!** You've set up the Healthcare Platform locally.
 </Check>
 
 Continue exploring:
 
-1. Review the [Design Specifications](/design-specs) for detailed feature documentation
+1. Review the [Features](/features/index) for detailed feature documentation
 2. Check the [API Reference](/api/API_INTEGRATION_GUIDE) for backend integration
 3. Understand the [Architecture](/architecture/BACKEND_ARCHITECTURE) for system design
+4. Browse [Design Specifications](/design-specs) for UI/UX details

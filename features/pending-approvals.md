@@ -11,13 +11,27 @@ The Pending Approvals feature provides a centralized queue for reviewing patient
 
 When patients complete questionnaires through their carepath, submissions enter the approval queue. Care team members review responses and either approve them or request revisions.
 
+<Info>
+Submissions are automatically prioritized based on waiting time to ensure timely review.
+</Info>
+
 ## Priority System
 
-Submissions are automatically prioritized based on waiting time:
+<CardGroup cols={3}>
+  <Card title="Urgent" icon="circle-exclamation">
+    48+ hours waiting (Red, pulsing)
+  </Card>
+  <Card title="High" icon="triangle-exclamation">
+    24-48 hours waiting (Amber)
+  </Card>
+  <Card title="Normal" icon="circle">
+    Less than 24 hours (Gray)
+  </Card>
+</CardGroup>
 
-| Priority | Wait Time | Indicator |
-|----------|-----------|-----------|
-| Urgent | 48+ hours | Red badge, pulsing |
+| Priority | Wait Time | Visual Indicator |
+|----------|-----------|------------------|
+| Urgent | 48+ hours | Red badge, pulsing animation |
 | High | 24-48 hours | Amber badge |
 | Normal | < 24 hours | Gray badge |
 
@@ -29,29 +43,37 @@ Submissions are automatically prioritized based on waiting time:
 - Bulk action buttons (when items selected)
 
 ### Filter Bar
-- **Search**: Find by form title or patient name
-- **Priority Filter**: All, Urgent, High, Normal
-- **Sort Options**: Submitted date, Priority, Form title, Patient name
-- **Sort Direction**: Ascending/Descending toggle
+
+| Control | Function |
+|---------|----------|
+| Search | Find by form title or patient name |
+| Priority Filter | All, Urgent, High, Normal |
+| Sort Options | Date, Priority, Title, Patient |
+| Sort Direction | Ascending/Descending toggle |
 
 ### Priority Summary
-Quick counts showing:
-- Urgent submissions
-- High priority submissions
-- Normal priority submissions
+
+Quick counts showing distribution:
+- Urgent submissions count
+- High priority count
+- Normal priority count
 
 ## Submission Cards
 
 Each pending item displays:
-- Selection checkbox
-- Patient avatar with initials
-- Form title with type badge
-- Patient name (clickable)
-- Relative time and exact timestamp
-- Priority badge
-- Action buttons
+
+| Element | Description |
+|---------|-------------|
+| Checkbox | For bulk selection |
+| Avatar | Patient initials |
+| Form Title | With type badge |
+| Patient Name | Clickable to profile |
+| Timestamp | Relative and exact time |
+| Priority Badge | Color-coded indicator |
+| Actions | Approve, Revise, Details |
 
 ### Expandable Details
+
 Click expand to view:
 - Form preview (first 3 questions/answers)
 - Submission metadata (IDs, waiting time)
@@ -59,15 +81,30 @@ Click expand to view:
 
 ## Actions
 
-### Individual Actions
-- **Approve**: Accept submission and process
-- **Request Revision**: Send back to patient with feedback
-- **View Details**: See complete submission
-
-### Bulk Actions
-Select multiple submissions to:
-- Approve all selected
-- Clear selection
+<Tabs>
+  <Tab title="Individual">
+    <Steps>
+      <Step title="Approve">
+        Accept submission and process into patient record
+      </Step>
+      <Step title="Request Revision">
+        Send back to patient with feedback
+      </Step>
+      <Step title="View Details">
+        See complete submission with all responses
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Bulk">
+    Select multiple submissions to:
+    - Approve all selected
+    - Clear selection
+    
+    <Warning>
+    Bulk approve only routine submissions. Review complex cases individually.
+    </Warning>
+  </Tab>
+</Tabs>
 
 ## Filtering
 
@@ -77,55 +114,108 @@ Real-time search across:
 - Patient names
 
 ### Priority Filter
-Toggle buttons for:
-- All priorities
-- Urgent only
-- High only
-- Normal only
+
+| Button | Shows |
+|--------|-------|
+| All | All priorities |
+| Urgent | Only urgent items |
+| High | Only high priority |
+| Normal | Only normal priority |
 
 ### Sorting
-Sort by:
-- Submitted date (default)
-- Priority level
-- Form title
-- Patient name
+
+| Sort By | Description |
+|---------|-------------|
+| Submitted Date | When form was submitted |
+| Priority Level | Urgency ranking |
+| Form Title | Alphabetical by form |
+| Patient Name | Alphabetical by patient |
 
 ## Pagination
 
-- Configurable page size (5, 10, 25, 50)
-- Page navigation controls
-- Results range display
+| Control | Options |
+|---------|---------|
+| Page Size | 5, 10, 25, 50 items |
+| Navigation | Previous/Next buttons |
+| Display | "Showing X-Y of Z" |
 
 ## Empty States
 
-### No Matching Filters
-- Search icon
-- "No forms match your filters" message
-- Clear filters button
-
-### All Caught Up
-- Checkmark icon
-- "No forms pending approval" message
-- Confirmation that queue is empty
+<Tabs>
+  <Tab title="No Matches">
+    When filters return no results:
+    - Search icon
+    - "No forms match your filters" message
+    - Clear filters button
+  </Tab>
+  <Tab title="All Done">
+    When queue is empty:
+    - Checkmark icon
+    - "No forms pending approval" message
+    - Confirmation that you're caught up
+  </Tab>
+</Tabs>
 
 ## Workflow
 
-1. **Patient Submits**: Questionnaire completed in carepath
-2. **Queue Entry**: Submission appears in pending list
-3. **Priority Assignment**: Auto-calculated from wait time
-4. **Review**: Care team member examines responses
-5. **Decision**: Approve or request revision
-6. **Processing**: Approved submissions update patient record
+**Approval Flow:** Patient Submits → Queue Entry → Priority Assigned → Review → Decision (Approve → Process OR Revise → Return to Patient)
+
+<Steps>
+  <Step title="Patient Submits">
+    Questionnaire completed in carepath
+  </Step>
+  <Step title="Queue Entry">
+    Submission appears in pending list
+  </Step>
+  <Step title="Priority Assignment">
+    Auto-calculated from wait time
+  </Step>
+  <Step title="Review">
+    Care team member examines responses
+  </Step>
+  <Step title="Decision">
+    Approve or request revision
+  </Step>
+  <Step title="Processing">
+    Approved submissions update patient record
+  </Step>
+</Steps>
+
+## Integration Points
+
+<AccordionGroup>
+  <Accordion title="Carepaths" icon="route">
+    Submissions originate from carepath questionnaires. Approval advances patient through their care journey.
+  </Accordion>
+  <Accordion title="Patient Profile" icon="user">
+    View patient context before approving. Click patient name to open profile.
+  </Accordion>
+  <Accordion title="Alerts" icon="bell">
+    Urgent submissions may trigger notifications to ensure timely review.
+  </Accordion>
+  <Accordion title="Analytics" icon="chart-line">
+    Approval times and volumes tracked in analytics dashboard.
+  </Accordion>
+</AccordionGroup>
 
 ## Best Practices
 
-1. **Monitor Urgent**: Address urgent items first
-2. **Regular Review**: Check queue multiple times daily
-3. **Bulk Processing**: Use bulk approve for routine submissions
-4. **Patient Communication**: Explain revision requests clearly
+<Tip>
+**Monitor Urgent** - Address urgent items first to prevent delays
+</Tip>
 
-## Integration
+<Tip>
+**Regular Review** - Check queue multiple times daily
+</Tip>
 
-- **Carepaths**: Submissions originate from carepath questionnaires
-- **Patient Profile**: View patient context before approving
-- **Alerts**: Urgent submissions may trigger notifications
+<Tip>
+**Bulk Processing** - Use bulk approve for routine submissions
+</Tip>
+
+<Tip>
+**Clear Feedback** - When requesting revision, explain what's needed
+</Tip>
+
+<Tip>
+**Patient Context** - Review patient profile for complex submissions
+</Tip>

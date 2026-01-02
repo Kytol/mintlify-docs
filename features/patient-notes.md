@@ -1,142 +1,235 @@
-# Patient Notes Feature
+---
+title: Patient Notes
+description: Comprehensive documentation system for patient care
+---
+
+# Patient Notes
+
+The Patient Notes feature provides a structured system for healthcare providers to document observations, concerns, and care-related information for each patient.
 
 ## Overview
-Implemented a comprehensive patient notes system that allows nurses to create, view, and manage notes for patients. Notes are visible as icons in the patients list with count badges, and a full modal interface provides detailed note management capabilities.
 
-## Implementation Details
+Patient notes enable care teams to maintain detailed records of patient interactions, observations, and clinical decisions. Notes are categorized, prioritized, and attributed to specific nurses for accountability.
 
-### Key Features
-1. **Notes Icon in Patients List**: Visual indicator with count badge showing number of notes
-2. **Comprehensive Notes Modal**: Full-featured interface for viewing and creating notes
-3. **Note Categories**: 6 different note types (General, Medical, Behavioral, Medication, Discharge, Follow-up)
-4. **Priority Levels**: 4 priority levels (Low, Normal, High, Urgent) with color coding
-5. **Privacy Controls**: Option to mark notes as private (nurses only)
-6. **Rich Metadata**: Timestamps, nurse attribution, and tagging system
+<Info>
+Notes are visible as icons with count badges in the patients list for quick reference.
+</Info>
 
-### Technical Implementation
+## Key Features
 
-#### Models (`patient-note.model.ts`)
-- `PatientNote`: Complete note structure with metadata
-- `NoteType`: 6 categories for different types of notes
-- `NotePriority`: 4 priority levels for triage
-- `NoteFilters`: Advanced filtering capabilities
-- `PatientNoteStats`: Statistics and analytics
+<CardGroup cols={2}>
+  <Card title="Categorized Notes" icon="folder">
+    6 note types for organized documentation
+  </Card>
+  <Card title="Priority Levels" icon="flag">
+    4 priority levels with color coding
+  </Card>
+  <Card title="Privacy Controls" icon="lock">
+    Mark sensitive notes as private
+  </Card>
+  <Card title="Rich Metadata" icon="tags">
+    Timestamps, attribution, and tagging
+  </Card>
+</CardGroup>
 
-#### Service (`patient-notes.service.ts`)
-- **CRUD Operations**: Create, read, update, delete notes
-- **Filtering**: Advanced filtering by type, priority, nurse, date, search terms
-- **Statistics**: Note counts, recent activity, priority distribution
-- **Mock Data**: 7 realistic sample notes across different patients
-- **Observable Updates**: Real-time updates via RxJS
+## Note Categories
 
-#### UI Integration (`patients-list.component.ts`)
-- **Notes Icon**: Clickable icon with count badge in patients table
-- **Modal Interface**: Full-screen modal for note management
-- **Add Note Form**: Comprehensive form with all note properties
-- **Note Display**: Rich note cards with metadata and styling
-- **Statistics Panel**: Summary of note activity and counts
+<Tabs>
+  <Tab title="General">
+    **Color:** Blue  
+    General patient information and observations not fitting other categories.
+    
+    **Examples:**
+    - Family visit notes
+    - Patient preferences
+    - Communication observations
+  </Tab>
+  <Tab title="Medical">
+    **Color:** Red  
+    Medical conditions, treatments, and clinical observations.
+    
+    **Examples:**
+    - Symptom changes
+    - Treatment responses
+    - Vital sign trends
+  </Tab>
+  <Tab title="Behavioral">
+    **Color:** Purple  
+    Behavioral observations and psychological concerns.
+    
+    **Examples:**
+    - Mood changes
+    - Anxiety observations
+    - Compliance concerns
+  </Tab>
+  <Tab title="Medication">
+    **Color:** Green  
+    Medication-related notes and adjustments.
+    
+    **Examples:**
+    - Dosage changes
+    - Side effects
+    - Administration notes
+  </Tab>
+  <Tab title="Discharge">
+    **Color:** Orange  
+    Discharge planning and coordination notes.
+    
+    **Examples:**
+    - Discharge criteria
+    - Home care instructions
+    - Follow-up scheduling
+  </Tab>
+  <Tab title="Follow-up">
+    **Color:** Yellow  
+    Follow-up requirements and scheduling notes.
+    
+    **Examples:**
+    - Appointment reminders
+    - Test result follow-ups
+    - Care plan reviews
+  </Tab>
+</Tabs>
 
-### Sample Notes Data
-The system includes realistic sample notes:
+## Priority Levels
 
-1. **Blood Sugar Management** (P-001) - Medical, High Priority
-2. **Family Concerns** (P-001) - General, Normal Priority  
-3. **Medication Adjustment** (P-002) - Medication, High Priority
-4. **Behavioral Observation** (P-002) - Behavioral, Normal Priority, Private
-5. **Pain Management Update** (P-003) - Medical, Normal Priority
-6. **Discharge Planning** (P-004) - Discharge, High Priority
-7. **Follow-up Required** (P-005) - Follow-up, Urgent Priority
+| Priority | Color | Description |
+|----------|-------|-------------|
+| Low | Gray | Non-urgent information for reference |
+| Normal | Blue | Standard priority documentation |
+| High | Orange | Important, needs attention soon |
+| Urgent | Red | Requires immediate attention |
 
-### Visual Design
+## User Interface
 
-#### Notes Icon
-- **Icon**: Edit/note icon (pencil and paper)
-- **Badge**: Cyan circular badge with note count
-- **Tooltip**: Contextual tooltip showing note count or "Click to add"
-- **Hover Effects**: Color changes and background highlighting
+### Patients List Integration
 
-#### Notes Modal
-- **Full-screen Modal**: Responsive design with proper z-index
-- **Two-column Layout**: Notes list on left, form/stats on right
-- **Color-coded Categories**: Different colors for each note type
-- **Priority Indicators**: Visual priority badges with appropriate colors
-- **Time Display**: Human-readable timestamps (e.g., "2 hours ago")
+Notes are accessible directly from the patients list:
+- **Notes Icon**: Clickable icon in the actions column
+- **Count Badge**: Cyan badge showing number of notes
+- **Tooltip**: Shows note count or "Click to add"
+- **Hover Effects**: Visual feedback on interaction
 
-#### Note Categories & Colors
-- **General**: Blue - General patient information
-- **Medical**: Red - Medical conditions and treatments
-- **Behavioral**: Purple - Behavioral observations and concerns
-- **Medication**: Green - Medication-related notes
-- **Discharge**: Orange - Discharge planning and coordination
-- **Follow-up**: Yellow - Follow-up requirements and scheduling
+### Notes Modal
 
-#### Priority Levels & Colors
-- **Low**: Gray - Non-urgent information
-- **Normal**: Blue - Standard priority
-- **High**: Orange - Important, needs attention
-- **Urgent**: Red - Requires immediate attention
+Full-featured modal interface with:
+- **Two-column Layout**: Notes list on left, form on right
+- **Note Cards**: Rich display with metadata and styling
+- **Statistics Panel**: Summary of note activity
+- **Add Note Form**: Comprehensive creation interface
 
-### Note Management Features
+## Creating Notes
 
-#### Create Notes
-- **Title**: Required descriptive title
-- **Content**: Required detailed note content
-- **Type Selection**: Dropdown with 6 categories
-- **Priority Selection**: Dropdown with 4 levels
-- **Privacy Toggle**: Checkbox for private notes
-- **Validation**: Prevents empty notes
+<Steps>
+  <Step title="Open Notes Modal">
+    Click the notes icon on any patient row
+  </Step>
+  <Step title="Fill Note Details">
+    Enter title and content (both required)
+  </Step>
+  <Step title="Select Category">
+    Choose appropriate note type from dropdown
+  </Step>
+  <Step title="Set Priority">
+    Select priority level based on urgency
+  </Step>
+  <Step title="Privacy Setting">
+    Toggle private if note is sensitive
+  </Step>
+  <Step title="Save Note">
+    Click "Add Note" to save
+  </Step>
+</Steps>
 
-#### View Notes
-- **Chronological Order**: Newest notes first
-- **Rich Display**: Title, content, metadata, tags
-- **Nurse Attribution**: Shows who created each note
-- **Time Stamps**: Human-readable time display
-- **Tag System**: Hashtag-style tags for categorization
+### Note Fields
 
-#### Statistics
-- **Total Count**: Overall number of notes
-- **Recent Activity**: Notes from last 7 days
-- **Priority Breakdown**: Count of high-priority notes
-- **Type Distribution**: Notes by category
+| Field | Required | Description |
+|-------|----------|-------------|
+| Title | Yes | Brief descriptive title |
+| Content | Yes | Detailed note content |
+| Type | Yes | Category selection |
+| Priority | Yes | Urgency level |
+| Private | No | Restrict visibility to nurses |
 
-### Integration Points
-- **Patients List**: Notes icon appears in actions column
-- **Patient Details**: Notes accessible from patient records
-- **Nurse Workflow**: Integrated into daily nursing tasks
-- **Audit Trail**: Complete history of note creation and updates
+## Viewing Notes
 
-### User Experience
-- **Quick Access**: One-click access from patients list
-- **Intuitive Interface**: Familiar modal design patterns
-- **Visual Feedback**: Clear indicators for note presence
-- **Efficient Workflow**: Streamlined note creation process
-- **Comprehensive View**: All patient notes in one place
+### Note Display
 
-## Files Created
-- `src/app/models/patient-note.model.ts` - Note data models and types
-- `src/app/services/patient-notes.service.ts` - Note management service with mock data
+Each note card shows:
+- Title with priority badge
+- Full content text
+- Category indicator with color
+- Nurse attribution
+- Timestamp (relative, e.g., "2 hours ago")
+- Tags (if any)
 
-## Files Modified
-- `src/app/pages/patients/patients-list.component.ts` - Added notes icon, modal, and functionality
+### Sorting
 
-## Benefits
-1. **Improved Communication**: Centralized note system for care team
-2. **Better Documentation**: Structured note categories and priorities
-3. **Enhanced Workflow**: Quick access to patient notes from main list
-4. **Audit Trail**: Complete history of patient interactions
-5. **Privacy Controls**: Sensitive information protection
-6. **Visual Indicators**: Immediate visibility of note presence
-7. **Categorization**: Organized notes by type and priority
-8. **Search & Filter**: Easy note discovery and management
+Notes are displayed in chronological order with newest first.
 
-## Future Enhancements
-- Note editing and deletion capabilities
-- Advanced search and filtering in modal
-- Note templates for common scenarios
-- Bulk note operations
-- Note sharing between care team members
-- Integration with patient alerts and reminders
-- Export capabilities for reporting
-- Mobile-optimized note creation
+## Statistics Panel
 
-The patient notes system provides a complete solution for healthcare documentation, enabling better communication and continuity of care while maintaining proper organization and privacy controls.
+The modal includes a statistics summary:
+
+| Metric | Description |
+|--------|-------------|
+| Total Count | Overall number of notes |
+| Recent Activity | Notes from last 7 days |
+| High Priority | Count of high/urgent notes |
+| Type Distribution | Breakdown by category |
+
+## Privacy Controls
+
+<Warning>
+Private notes are only visible to nursing staff. Use this setting for sensitive information.
+</Warning>
+
+### When to Use Private Notes
+- Sensitive behavioral observations
+- Family dynamics concerns
+- Confidential medical information
+- Staff-only communications
+
+## Sample Notes
+
+The system includes realistic sample data:
+
+| Patient | Type | Priority | Title |
+|---------|------|----------|-------|
+| P-001 | Medical | High | Blood Sugar Management |
+| P-001 | General | Normal | Family Concerns |
+| P-002 | Medication | High | Medication Adjustment |
+| P-002 | Behavioral | Normal | Behavioral Observation (Private) |
+| P-003 | Medical | Normal | Pain Management Update |
+| P-004 | Discharge | High | Discharge Planning |
+| P-005 | Follow-up | Urgent | Follow-up Required |
+
+## Integration Points
+
+### Patient Records
+Notes are linked to patient profiles and accessible from:
+- Patients list (via icon)
+- Patient detail view
+- Care team dashboard
+
+### Audit Trail
+Complete history maintained:
+- Creation timestamps
+- Nurse attribution
+- Modification tracking
+
+### Alerts
+High-priority notes can trigger:
+- Dashboard notifications
+- Care team alerts
+- Shift handoff highlights
+
+## Best Practices
+
+1. **Be Specific**: Use clear, descriptive titles
+2. **Choose Correct Category**: Helps with filtering and reporting
+3. **Set Appropriate Priority**: Reserve urgent for true emergencies
+4. **Use Privacy Wisely**: Only mark private when necessary
+5. **Document Timely**: Add notes promptly after observations
+6. **Include Context**: Provide enough detail for other team members
+7. **Use Tags**: Add relevant tags for searchability
